@@ -1,10 +1,10 @@
 html {
   scroll-behavior: smooth;
-  /* scroll-padding-top: 4.5rem; */
+  scroll-padding-top: 4.5rem;
 }
 body {
   padding-top: 85px;
-  /* margin-top: auto; */
+  margin-top: auto;
 }
 header {
   display: block;
@@ -20,7 +20,7 @@ header.hide {
   margin-top: -300px;
 }
 header.show {
-  margin-top: 0vh;
+  margin-top: 0px;
 }
 nav {
   display: flex;
@@ -68,4 +68,7 @@ article {
   border-bottom: 4px solid black;
 }
 section {
+}
+section #images {
+  width: 100%;
 }

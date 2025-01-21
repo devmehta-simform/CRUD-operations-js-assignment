@@ -25,15 +25,20 @@ document.querySelectorAll("nav li").forEach((liEle) => {
 });
 function route(e) {
   const currlink = document.querySelector(".current_link");
-  console.log(e.currentTarget.id);
-
   const newlink = document.querySelector("#" + e.currentTarget.id);
-  currlink.classList = "";
+  currlink.classList &&= "";
   newlink.classList = "current_link";
   const currele = document.querySelector(".current_page");
   const newele = document.querySelector(
     "#" + e.currentTarget.id.split("_link")[0]
   );
-  currele.className = "";
+  currele.className &&= "";
   newele.className = "current_page";
+  localStorage.setItem("curr_id", e.currentTarget.id);
 }
+window.addEventListener("DOMContentLoaded", function () {
+  const curr_id = localStorage.getItem("curr_id");
+  if (curr_id != null) {
+    route({ currentTarget: { id: curr_id } });
+  }
+});
