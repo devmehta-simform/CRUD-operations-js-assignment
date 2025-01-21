@@ -7,19 +7,23 @@ document.addEventListener("scroll", (e) => {
   }
 });
 const section = document.querySelector("section");
-document.querySelectorAll("a").forEach((aEle) => {
-  aEle.addEventListener("click", (e) => {
+document.querySelectorAll("nav li").forEach((liEle) => {
+  liEle.addEventListener("click", (e) => {
     e.preventDefault();
     route(e);
   });
 });
 function route(e) {
   const currlink = document.querySelector(".current_link");
-  const newlink = document.querySelector("#" + e.target.id);
+  console.log(e.currentTarget.id);
+
+  const newlink = document.querySelector("#" + e.currentTarget.id);
   currlink.classList = "";
   newlink.classList = "current_link";
-  const currele = section.querySelector(".current_page");
-  const newele = section.querySelector("#" + e.target.id.split("_link")[0]);
+  const currele = document.querySelector(".current_page");
+  const newele = document.querySelector(
+    "#" + e.currentTarget.id.split("_link")[0]
+  );
   currele.className = "";
   newele.className = "current_page";
 }
