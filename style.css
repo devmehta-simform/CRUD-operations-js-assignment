@@ -43,4 +43,15 @@ nav li:hover {
 a {
   text-decoration: none;
   color: black;
+  padding: 13px 0;
+}
+article {
+  transition: opacity 1s ease-out;
+  display: none;
+}
+.current_page {
+  display: block;
+}
+.current_link {
+  border-bottom: 4px solid black;
 }
