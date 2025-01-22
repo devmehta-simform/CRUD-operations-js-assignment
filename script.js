@@ -44,6 +44,9 @@ function route(e) {
   currele.className &&= "";
   newele.className = "current_page";
   localStorage.setItem("curr_id", e.currentTarget.id);
+  if (e.currentTarget.id == "images_link") {
+    startSlideShow();
+  }
 }
 
 const carousel = document.querySelector(".carousel");
@@ -60,13 +63,38 @@ for (let i = 0; i < 3; i++) {
   carousel.appendChild(imgele);
 }
 const carouselNextBtn = document.querySelector(".carousel-next");
+const carouselPrevBtn = document.querySelector(".carousel-prev");
+
 carouselNextBtn.addEventListener("click", (e) => {
   const firstChild = carousel.firstChild;
   firstChild.style.opacity = "0";
   firstChild.style.visibility = "hidden";
+  // firstChild.style.marginRight = "slideOut 1s ease-in-out;";
   carousel.removeChild(firstChild);
   const secondChild = carousel.firstChild;
+  carousel.appendChild(firstChild);
+  secondChild.offsetHeight; // kinda forcing browser to apply styling after dom is loaded
   secondChild.style.opacity = "1";
   secondChild.style.visibility = "visible";
-  carousel.appendChild(firstChild);
+  // secondChild.style.marginRight = "slideIn 1s ease-in-out;";
+});
+
+carouselPrevBtn.addEventListener("click", (e) => {
+  const firstChild = carousel.firstChild;
+  firstChild.style.opacity = "0";
+  firstChild.style.visibility = "hidden";
+  const lastChild = carousel.lastChild;
+  carousel.removeChild(lastChild);
+  carousel.insertBefore(lastChild, firstChild);
+  lastChild.offsetHeight; // kinda forcing browser to apply styling after dom is loaded
+  lastChild.style.opacity = "1";
+  lastChild.style.visibility = "visible";
+});
+let slideShowInterval = null;
+function startSlideShow() {
+  slideShowInterval = setInterval(() => carouselNextBtn.click(), 5000);
+}
+
+window.addEventListener("beforeunload", function () {
+  clearInterval(slideShowInterval);
 });
