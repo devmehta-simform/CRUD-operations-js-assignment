@@ -6,6 +6,11 @@ body {
   padding-top: 85px;
   margin-top: auto;
 }
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  text-transform: capitalize;
+}
 header {
   display: block;
   position: fixed;
@@ -15,6 +20,7 @@ header {
   background-color: whitesmoke;
   width: 100%;
   transition: margin 0.4s ease;
+  border-bottom: 1px solid gray;
 }
 header.hide {
   margin-top: -300px;
