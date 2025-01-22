@@ -56,9 +56,8 @@ for (let i = 0; i < 3; i++) {
     "src",
     `https://picsum.photos/seed/${Math.random() * 100}/1280/720`
   );
-  if (i != 0) {
-    imgele.style.opacity = "0";
-    imgele.style.visibility = "hidden";
+  if (i == 0) {
+    imgele.className = "current_img";
   }
   carousel.appendChild(imgele);
 }
@@ -67,28 +66,22 @@ const carouselPrevBtn = document.querySelector(".carousel-prev");
 
 carouselNextBtn.addEventListener("click", (e) => {
   const firstChild = carousel.firstChild;
-  firstChild.style.opacity = "0";
-  firstChild.style.visibility = "hidden";
-  // firstChild.style.marginRight = "slideOut 1s ease-in-out;";
+  firstChild.className = "";
   carousel.removeChild(firstChild);
   const secondChild = carousel.firstChild;
   carousel.appendChild(firstChild);
   secondChild.offsetHeight; // kinda forcing browser to apply styling after dom is loaded
-  secondChild.style.opacity = "1";
-  secondChild.style.visibility = "visible";
-  // secondChild.style.marginRight = "slideIn 1s ease-in-out;";
+  secondChild.className = "current_img";
 });
 
 carouselPrevBtn.addEventListener("click", (e) => {
   const firstChild = carousel.firstChild;
-  firstChild.style.opacity = "0";
-  firstChild.style.visibility = "hidden";
+  firstChild.className = "";
   const lastChild = carousel.lastChild;
   carousel.removeChild(lastChild);
   carousel.insertBefore(lastChild, firstChild);
   lastChild.offsetHeight; // kinda forcing browser to apply styling after dom is loaded
-  lastChild.style.opacity = "1";
-  lastChild.style.visibility = "visible";
+  lastChild.className = "current_img";
 });
 let slideShowInterval = null;
 function startSlideShow() {
