@@ -23,6 +23,30 @@ document.addEventListener("scroll", (e) => {
     document.querySelector("header").className = "show";
   }
   scrollPos = newScrollPos;
+  function isElementVisible(element) {
+    const elementTop = element.offsetTop;
+    const elementBottom = elementTop + element.offsetHeight;
+    const viewportTop = window.scrollY;
+    const viewportBottom = viewportTop + window.innerHeight;
+
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+  }
+  function toggleMeters(state) {
+    const skillsMeterContainer = document.querySelector(
+      ".skills-meters-container"
+    );
+    state == "show"
+      ? skillsMeterContainer.classList.replace("hide", "show")
+      : skillsMeterContainer.classList.replace("show", "hide");
+  }
+  if (isElementVisible(document.querySelector(".skills-meters-container"))) {
+    // console.log("Element is visible in viewport");
+    toggleMeters("show");
+  } else {
+    toggleMeters("hide");
+
+    // console.log("Element is not visible in viewport");
+  }
 });
 
 // const section = document.querySelector("section");
