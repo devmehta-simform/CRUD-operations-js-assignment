@@ -1,0 +1,41 @@
+.carousel {
+  display: flex;
+  flex-direction: row;
+  padding: 0 20vw;
+  overflow: hidden;
+  gap: 100vw;
+}
+.carousel img {
+  width: 100%;
+  height: auto;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 1.5s ease-in-out;
+}
+.carousel img.current_img {
+  visibility: visible;
+  opacity: 1;
+}
+.carousel-btns-container {
+  display: flex;
+  gap: 20vw;
+  align-items: center;
+  justify-content: center;
+  padding: 5vw;
+}
+.carousel-btns-container button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  background: linear-gradient(to bottom, #fff 50%, #000 50%);
+  background-size: 100% 180%;
+  background-position: top;
+  transition: background-position 0.3s ease-out, color 0.5s ease-out;
+  font-size: large;
+  font-weight: bold;
+}
+.carousel-btns-container button:hover {
+  background-position: bottom;
+  color: #fff;
+}

@@ -1,0 +1,149 @@
+#about_us .img-container {
+  width: 25vw;
+  height: 25vw;
+  /* overflow: hidden; */
+}
+#about_us .img-container img {
+  border-radius: 50%;
+  max-width: 60%;
+  height: auto;
+  margin: 16%;
+}
+
+#about_us_article p {
+  padding: 3px 45px;
+  font-size: 1.5rem;
+}
+#about_us_article p::first-letter {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.skills-overview h1 {
+  font-size: 2.5rem;
+  margin-left: 7%;
+}
+.skills-overview {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10vh 3vw;
+  gap: 7vh;
+}
+.skills-meters-container.show {
+  width: 100%;
+  /* background-color: black; */
+  /* padding: 10px; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2vh;
+  visibility: visible;
+  opacity: 1;
+}
+.skills-meters-container.hide {
+  visibility: hidden;
+  opacity: 0;
+}
+.meter-container {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  /* color: red; */
+  /* gap: 8vw; */
+  justify-content: center;
+  align-items: center;
+}
+.meter {
+  width: 0%;
+  height: 50%;
+  transition: all 0.3s ease-in-out;
+}
+.meter-container .label {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+.meter#html {
+  background: #80d0f2; /* Bright Sky Blue */
+}
+
+.meter#css {
+  background: #ffb7b2; /* Soft Salmon */
+}
+
+.meter#js {
+  background: #b4f8d4; /* Light Aquamarine */
+}
+
+.meter#cpp {
+  background: #f4a300; /* Bright Orange */
+}
+
+.meter#c {
+  background: #dcb0ff; /* Light Lilac */
+}
+
+.meter#java {
+  background: #ff6f61; /* Bright Coral */
+}
+
+.meter#linux {
+  background: #f2e96d; /* Lemon Chiffon */
+}
+
+.meter-container .label#html-meter {
+  color: #4e9baf; /* Bright Blue */
+}
+
+.meter-container .label#css-meter {
+  color: #f45d48; /* Soft Red Coral */
+}
+
+.meter-container .label#js-meter {
+  color: #66d5ad; /* Bright Mint Green */
+}
+
+.meter-container .label#cpp-meter {
+  color: #e07a00; /* Deep Orange */
+}
+
+.meter-container .label#c-meter {
+  color: #a67dff; /* Medium Lilac */
+}
+
+.meter-container .label#java-meter {
+  color: #d04a29; /* Bright Coral Red */
+}
+
+.meter-container .label#linux-meter {
+  color: #b59e2f; /* Golden Olive */
+}
+
+.skills-meters-container.show .meter.fill-10 {
+  width: 10%;
+}
+.skills-meters-container.show .meter.fill-20 {
+  width: 20%;
+}
+.skills-meters-container.show .meter.fill-30 {
+  width: 30%;
+}
+.skills-meters-container.show .meter.fill-40 {
+  width: 40%;
+}
+.skills-meters-container.show .meter.fill-50 {
+  width: 50%;
+}
+.skills-meters-container.show .meter.fill-60 {
+  width: 60%;
+}
+.skills-meters-container.show .meter.fill-70 {
+  width: 70%;
+}
+.skills-meters-container.show .meter.fill-80 {
+  width: 80%;
+}
+.skills-meters-container.show .meter.fill-90 {
+  width: 90%;
+}
+.skills-meters-container.show .meter.fill-100 {
+  width: 100%;
+}
