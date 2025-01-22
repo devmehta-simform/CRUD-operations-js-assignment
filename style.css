@@ -61,6 +61,12 @@ article {
   transition: opacity 1s ease-out;
   display: none;
 }
+article #image {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch; */
+}
 .current_page {
   display: block;
 }
@@ -72,25 +78,27 @@ section {
 .carousel {
   display: flex;
   flex-direction: row;
+  padding: 0 20vw;
   overflow: hidden;
+  gap: 100vw;
 }
 .carousel img {
   width: 100%;
   height: auto;
-  opacity: 0;
   visibility: hidden;
+  opacity: 0;
   transition: all 1.5s ease-in-out;
 }
 .carousel img.current_img {
-  opacity: 1;
   visibility: visible;
+  opacity: 1;
 }
 .carousel-btns-container {
   display: flex;
   gap: 20vw;
   align-items: center;
   justify-content: center;
-  padding: 50px;
+  padding: 5vw;
 }
 .carousel-btns-container button {
   cursor: pointer;
