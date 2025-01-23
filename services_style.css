@@ -44,7 +44,7 @@
   align-items: flex-start;
   justify-content: space-between;
   font-size: 1.25rem;
-  width: 50%;
+  width: 70%;
   /* gap: 2vw; */
   /* min-width: 100px; */
 }
@@ -73,6 +73,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+  margin-top: 20px;
 }
 .services-pagination-btns-container .pagination-btn {
   cursor: pointer;
@@ -83,6 +84,7 @@
   background-position: top;
   background-size: 100% 190%;
   transition: all 0.3s;
+  font-size: 12px;
   /* background: linear-gradient(to bottom, transparent 50%, #159df8 50%);
   background-position: top;
   background-size: 100% 180%; */

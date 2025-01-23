@@ -43,12 +43,14 @@ function handlePagination(btnid) {
   //   2 -> 6-10
   //   3 -> 11-15
   //   4 -> 16
-  servicesItems.forEach((servicesItem) => {
+  servicesItems.forEach((servicesItem, i) => {
     const servicesItemId = parseInt(servicesItem.id.split("-")[2]);
     const tmpval = btnid * pagOffset - servicesItemId;
 
     if (tmpval >= 0 && tmpval < pagOffset) {
-      //   servicesItem.style.display = "flex";
+      if (tmpval == 0 || i == servicesItems.length - 1) {
+        servicesItem.style.borderBottom = "2px solid gray";
+      }
       servicesItem.classList.contains("hide")
         ? servicesItem.classList.replace("hide", "show")
         : servicesItem.classList.add("show");
