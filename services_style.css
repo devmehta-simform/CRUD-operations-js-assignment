@@ -9,11 +9,7 @@
   cursor: pointer;
   background-position: bottom;
 }
-/* services-items-container>services-item>services-item-content>services-item-header,services-item-footer */
-/* .services-items-container {
-  display: flex;
-  grid-template-rows: repeat(10, 1fr);
-} */
+
 .services-items-container {
   display: flex;
   flex-direction: column;
@@ -55,17 +51,48 @@
 .services-item-content p {
   line-height: 2.25rem;
 }
-.service-item-image-container {
-  /* background-color: yellow; */
-  /* min-width: 300px; */
-  /* border: 10px solid black; */
-}
 .services-item img {
   width: 100%;
   height: auto;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 .services-item-footer {
   font-size: 1rem;
   color: gray;
+}
+.services-item.show {
+  display: flex;
+}
+.services-item.hide {
+  display: none;
+}
+.services-pagination-btns-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.services-pagination-btns-container .pagination-btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 0;
+  background: linear-gradient(to bottom, transparent 50%, black 50%);
+  background-position: top;
+  background-size: 100% 190%;
+  transition: all 0.3s;
+  /* background: linear-gradient(to bottom, transparent 50%, #159df8 50%);
+  background-position: top;
+  background-size: 100% 180%; */
+}
+.services-pagination-btns-container .pagination-btn:hover {
+  background-position: bottom;
+  color: white;
+}
+
+.pagination-btn.current-pag-btn {
+  background-color: black;
+  color: white;
 }

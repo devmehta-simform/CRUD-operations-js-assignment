@@ -1,4 +1,5 @@
 import { startSlideShow, stopSlideShow } from "./CarouselUtil.mjs";
+import { HandleServicesPagination } from "./ServicesPaginationUtil.mjs";
 window.addEventListener("DOMContentLoaded", function () {
   const curr_id = localStorage.getItem("curr_id");
   if (curr_id != null) {
@@ -69,11 +70,16 @@ function route(e) {
   currele.className &&= "";
   newele.className = "current_page";
   localStorage.setItem("curr_id", e.currentTarget.id);
+
   if (e.currentTarget.id == "images_link") {
     startSlideShow();
   } else {
     stopSlideShow();
   }
+  if (e.currentTarget.id == "services_link") {
+    HandleServicesPagination();
+  }
+  window.scrollTo(0, 0);
 }
 
 window.addEventListener("beforeunload", () => stopSlideShow());
