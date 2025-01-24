@@ -5,6 +5,8 @@ let currbtn = 1;
 
 export function HandleServicesPagination() {
   // debugger;
+  // Product.create();
+  // Product.create();
   if (
     !document
       .querySelector(".services-pagination-btns-container")

@@ -1,21 +1,22 @@
 export class Product {
-  static #i = JSON.parse(localStorage.getItem("itemList")).length;
+  static #i = JSON.parse(localStorage.getItem("itemList"))?.length;
   static getAll() {
     const itemList = this.#itemList;
-    itemList.forEach(({ header, link, body, footer }, i) =>
-      this.#createHtmlElement(header, link, body, footer, i + 1)
+    itemList.forEach(({ header, link, body, footer, imgLink }, i) =>
+      this.#createHtmlElement(header, link, body, footer, imgLink, i + 1)
     );
   }
   static create(
     header = "my item",
     link = "#",
     body = "this is my item",
-    footer = "200$"
+    footer = "200$",
+    imgLink = `https://picsum.photos/seed/${Math.random() * 100}/360/240`
   ) {
     this.#i = this.#i + 1;
-    this.#storeItemInLocalStorage({ header, link, body, footer });
+    this.#storeItemInLocalStorage({ header, link, body, footer, imgLink });
   }
-  static #createHtmlElement(header, link, body, footer, i) {
+  static #createHtmlElement(header, link, body, footer, imgLink, i) {
     const itemWrapper = document.createElement("div");
     itemWrapper.id = `services-item-${i}`;
     itemWrapper.classList.add("services-item", "hide");
@@ -32,12 +33,19 @@ export class Product {
     itemLink.href = link;
     itemBody.innerHTML = body;
     itemFooter.innerHTML = footer;
+    const imgContainer = document.createElement("div");
+    imgContainer.classList.add("services-item-image-container");
+    const img = document.createElement("img");
+    img.src = imgLink;
+    console.log(imgLink);
+
     itemContent.appendChild(itemHeader.appendChild(itemLink));
     itemContent.appendChild(itemBody);
     itemContent.appendChild(itemFooter);
+    imgContainer.appendChild(img);
     itemWrapper.appendChild(itemContent);
+    itemWrapper.appendChild(imgContainer);
     this.#container.appendChild(itemWrapper);
-    // return itemWrapper;
   }
 
   static #storeItemInLocalStorage(item) {
@@ -74,3 +82,81 @@ export class Product {
               />
             </div>
           </div> */
+/* const products = [
+    {
+      id: 1,
+      header: 'Laptop Backpack',
+      footer: 109.95,
+      body: 'A cool laptop backpack',
+      imageLink: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
+      rating: 3.9,
+      link: '#',
+    },
+    {
+      id: 2,
+      header: 'Casual T-Shirt for Men',
+      footer: 22.3,
+      body: 'Slim-fitting style, t-shoty for men',
+      imageLink:
+        'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
+      rating: 4.1,
+      link: '#',
+    },
+    {
+      id: 3,
+      header: 'Mens Cotton Jacket',
+      footer: 55.99,
+      body: 'Great outerwear jackets for spring, autumn, or winter.',
+      imageLink: 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg',
+      rating: 4.7,
+      link: '#',
+    },
+    {
+      id: 4,
+      header: 'Mens Casual Slim Fit',
+      footer: 15.99,
+      body: 'An aweome shirt for men',
+      imageLink: 'https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg',
+      link: '#',
+    },
+    {
+      id: 5,
+      header: "Women's Gold & Silver Bracelet",
+      footer: 695,
+      body: 'A very cool bracelet.',
+      imageLink:
+        'https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg',
+      rating: 400,
+      link: '#',
+    },
+    {
+      id: 6,
+      header: 'Solid Gold Petite Micropave',
+      footer: 168,
+      body: 'A very cool jewlery for women',
+      imageLink:
+        'https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg',
+      rating: 3.9,
+      link: '#',
+    },
+    {
+      id: 7,
+      header: 'White Gold Plated Princess',
+      footer: 9.99,
+      body: 'A great diamond engagement ring for her.',
+      imageLink:
+        'https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg',
+      rating: 3,
+      link: '#',
+    },
+    {
+      id: 8,
+      header: 'Gold-plated Earrings',
+      footer: 10.99,
+      body: 'Rose Gold Plated Double Flared Tunnel Plug Earrings.',
+      imageLink:
+        'https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg',
+      rating: 1.9,
+      link: '#',
+    },
+  ]; */
