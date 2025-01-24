@@ -5,6 +5,9 @@ window.addEventListener("DOMContentLoaded", function () {
   if (curr_id != null) {
     route({ currentTarget: { id: curr_id } });
   }
+  if (localStorage.getItem("itemList") == null) {
+    localStorage.setItem("itemList", JSON.stringify([]));
+  }
 });
 
 let scrollPos = 0;

@@ -1,7 +1,10 @@
+import { Product } from "./ProductsUtil.mjs";
+
 const pagOffset = 5;
 let currbtn = 1;
 
 export function HandleServicesPagination() {
+  Product.getAll();
   if (
     !document
       .querySelector(".services-pagination-btns-container")
@@ -64,10 +67,10 @@ function handlePagination(btnid) {
   });
   document
     .querySelector(`.pagination-btn#btn-${currbtn}`)
-    .classList.remove("current-pag-btn");
+    ?.classList.remove("current-pag-btn");
   document
     .querySelector(`.pagination-btn#btn-${btnid}`)
-    .classList.add("current-pag-btn");
+    ?.classList.add("current-pag-btn");
   window.scrollTo(0, 0);
   currbtn = btnid;
 }
