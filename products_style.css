@@ -1,16 +1,16 @@
-.services-link {
+.products-link {
   background: linear-gradient(to bottom, transparent 50%, #159df8 50%);
   background-size: 100% 180%;
   background-position: top;
   transition: all 0.3s;
 }
 
-.services-link:hover {
+.products-link:hover {
   cursor: pointer;
   background-position: bottom;
 }
 
-.services-items-container {
+.products-items-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -18,7 +18,7 @@
   padding: 0 20px;
   margin: 0 7vw;
 }
-.services-item {
+.products-item {
   display: flex;
   flex-direction: row;
   height: min-content;
@@ -31,14 +31,14 @@
   border-bottom: 2px solid gray;
   padding: 30px 10px;
 }
-.services-item:last-child {
+.products-item:last-child {
   border: none;
 }
-.services-item-header {
+.products-item-header {
   font-size: 1.5rem;
   /* background-color: green; */
 }
-.services-item-content {
+.products-item-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -48,30 +48,30 @@
   /* gap: 2vw; */
   /* min-width: 100px; */
 }
-.services-item-content p {
+.products-item-content p {
   line-height: 2.25rem;
 }
-.services-item-image-container {
-  /* width: 80px;
+.products-item-image-container {
+  width: 80px;
   height: 80px;
-  padding: 50px 0px; */
+  padding: 50px 0px;
 }
-.services-item img {
+.products-item img {
   width: 100%;
   height: auto;
   border-radius: 10px;
 }
-.services-item-footer {
+.products-item-footer {
   font-size: 1rem;
   color: gray;
 }
-.services-item.show {
+.products-item.show {
   display: flex;
 }
-.services-item.hide {
+.products-item.hide {
   display: none;
 }
-.services-pagination-btns-container {
+.products-pagination-btns-container {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -80,7 +80,7 @@
   gap: 10px;
   margin-top: 20px;
 }
-.services-pagination-btns-container .pagination-btn {
+.products-pagination-btns-container .pagination-btn {
   cursor: pointer;
   padding: 10px 20px;
   background-color: transparent;
@@ -91,10 +91,10 @@
   transition: all 0.3s;
   font-size: 12px;
   /* background: linear-gradient(to bottom, transparent 50%, #159df8 50%);
-  background-position: top;
-  background-size: 100% 180%; */
+    background-position: top;
+    background-size: 100% 180%; */
 }
-.services-pagination-btns-container .pagination-btn:hover {
+.products-pagination-btns-container .pagination-btn:hover {
   background-position: bottom;
   color: white;
 }

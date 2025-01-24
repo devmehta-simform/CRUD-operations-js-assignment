@@ -2,42 +2,44 @@ export class Product {
   static #i = JSON.parse(localStorage.getItem("itemList"))?.length;
   static getAll() {
     const itemList = this.#itemList;
+    // console.log(this.#container);
+
     itemList.forEach(({ header, link, body, footer, imgLink }, i) =>
       this.#createHtmlElement(header, link, body, footer, imgLink, i + 1)
     );
   }
-  static create(
+  static create({
     header = "my item",
     link = "#",
     body = "this is my item",
     footer = "200$",
-    imgLink = `https://picsum.photos/seed/${Math.random() * 100}/360/240`
-  ) {
+    imgLink = `https://picsum.photos/seed/${Math.random() * 100}/360/240`,
+  }) {
     this.#i = this.#i + 1;
     this.#storeItemInLocalStorage({ header, link, body, footer, imgLink });
   }
   static #createHtmlElement(header, link, body, footer, imgLink, i) {
     const itemWrapper = document.createElement("div");
-    itemWrapper.id = `services-item-${i}`;
-    itemWrapper.classList.add("services-item", "hide");
+    itemWrapper.id = `products-item-${i}`;
+    itemWrapper.classList.add("products-item");
     const itemContent = document.createElement("div");
-    itemContent.classList.add("services-item-content");
+    itemContent.classList.add("products-item-content");
     const itemHeader = document.createElement("h4");
-    itemHeader.classList.add("services-item-header");
+    itemHeader.classList.add("products-item-header");
     const itemLink = document.createElement("a");
-    itemLink.classList.add("services-link");
+    itemLink.classList.add("products-link");
     const itemBody = document.createElement("p");
     const itemFooter = document.createElement("span");
-    itemFooter.classList.add("services-item-footer");
+    itemFooter.classList.add("products-item-footer");
     itemLink.innerHTML = header;
     itemLink.href = link;
     itemBody.innerHTML = body;
     itemFooter.innerHTML = footer;
     const imgContainer = document.createElement("div");
-    imgContainer.classList.add("services-item-image-container");
+    imgContainer.classList.add("products-item-image-container");
     const img = document.createElement("img");
     img.src = imgLink;
-    console.log(imgLink);
+    // console.log(imgLink);
 
     itemContent.appendChild(itemHeader.appendChild(itemLink));
     itemContent.appendChild(itemBody);
@@ -57,10 +59,12 @@ export class Product {
     return JSON.parse(localStorage.getItem("itemList"));
   }
   static get #container() {
-    return document.querySelector(".services-items-container");
+    const container = document.querySelector(".products-items-container");
+    // container.children = null;
+    return container;
   }
 }
-/*     <div class="services-item" id="serices-item-4">
+/*     <div class="products-item" id="serices-item-4">
             <div class="services-item-content">
               <h4 class="services-item-header">
                 <a class="services-link" href="#"

@@ -1,18 +1,12 @@
-import { Product } from "./ProductsUtil.mjs";
-
 const pagOffset = 5;
 let currbtn = 1;
 
 export function HandleServicesPagination() {
-  // debugger;
-  // Product.create();
-  // Product.create();
   if (
     !document
       .querySelector(".services-pagination-btns-container")
       .hasChildNodes()
   ) {
-    Product.getAll();
     initPagBtns(
       document.querySelector(".services-pagination-btns-container"),
       document.querySelectorAll(".services-items-container .services-item")

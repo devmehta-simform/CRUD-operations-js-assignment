@@ -1,5 +1,6 @@
 import { startSlideShow, stopSlideShow } from "./CarouselUtil.mjs";
 import { HandleServicesPagination } from "./ServicesPaginationUtil.mjs";
+import { productsHandler } from "./HandleProducts.mjs";
 window.addEventListener("DOMContentLoaded", function () {
   const curr_id = localStorage.getItem("curr_id");
   if (curr_id != null) {
@@ -81,6 +82,9 @@ function route(e) {
   }
   if (e.currentTarget.id == "services_link") {
     HandleServicesPagination();
+  }
+  if (e.currentTarget.id == "products_link") {
+    productsHandler();
   }
   window.scrollTo(0, 0);
 }

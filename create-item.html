@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>create item</title>
+    <script src="ProductsUtil.mjs" type="module" defer></script>
+  </head>
+  <body>
+    <a href="index.html">back</a>
+    <form name="create-form">
+      <label for="header">name</label>
+      <input id="header" type="text" required /><br />
+      <label for="body">description</label>
+      <input id="body" type="text" required /><br />
+      <label for="footer">price</label>
+      <input id="footer" type="text" required /><br />
+      <label for="imgLink">link to image</label>
+      <input id="imgLink" type="url" required />
+      <button id="submitbtn" type="button">submit</button>
+    </form>
+  </body>
+  <script type="module" defer>
+    import { Product } from "./ProductsUtil.mjs";
+    const submitBtn = document.querySelector("#submitbtn");
+    submitBtn.addEventListener("click", (e) => {
+      const form = document.forms["create-form"];
+      const header = form["header"].value;
+      const footer = form["footer"].value;
+      const body = form["body"].value;
+      const imgLink = form["imgLink"].value;
+      Product.create({ header, footer, body, imgLink });
+      window.location = "index.html";
+    });
+    //   function submitHandler() {
+    //     console.log(document.forms);
+    //   }
+  </script>
+</html>
