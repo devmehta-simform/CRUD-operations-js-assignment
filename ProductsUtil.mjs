@@ -1,7 +1,7 @@
 export class Product {
   static #i = JSON.parse(localStorage.getItem("itemList")).length;
   static getAll() {
-    const itemList = JSON.parse(localStorage.getItem("itemList"));
+    const itemList = this.#itemList;
     itemList.forEach(({ header, link, body, footer }, i) =>
       this.#createHtmlElement(header, link, body, footer, i + 1)
     );
@@ -18,7 +18,7 @@ export class Product {
   static #createHtmlElement(header, link, body, footer, i) {
     const itemWrapper = document.createElement("div");
     itemWrapper.id = `services-item-${i}`;
-    itemWrapper.classList.add("services-item");
+    itemWrapper.classList.add("services-item", "hide");
     const itemContent = document.createElement("div");
     itemContent.classList.add("services-item-content");
     const itemHeader = document.createElement("h4");
@@ -41,11 +41,13 @@ export class Product {
   }
 
   static #storeItemInLocalStorage(item) {
-    const itemList = JSON.parse(localStorage.getItem("itemList"));
+    const itemList = this.#itemList;
     itemList.push(item);
     localStorage.setItem("itemList", JSON.stringify(itemList));
   }
-
+  static get #itemList() {
+    return JSON.parse(localStorage.getItem("itemList"));
+  }
   static get #container() {
     return document.querySelector(".services-items-container");
   }

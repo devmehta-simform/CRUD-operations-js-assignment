@@ -4,12 +4,13 @@ const pagOffset = 5;
 let currbtn = 1;
 
 export function HandleServicesPagination() {
-  Product.getAll();
+  // debugger;
   if (
     !document
       .querySelector(".services-pagination-btns-container")
       .hasChildNodes()
   ) {
+    Product.getAll();
     initPagBtns(
       document.querySelector(".services-pagination-btns-container"),
       document.querySelectorAll(".services-items-container .services-item")
@@ -38,6 +39,7 @@ function initPagBtns(parentEle, nitems, offset) {
 
 function handlePagination(btnid) {
   //   console.log(btnid);
+
   const servicesItems = document.querySelectorAll(
     ".services-items-container .services-item"
   );
