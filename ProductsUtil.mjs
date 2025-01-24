@@ -1,22 +1,29 @@
 export class Product {
-  static #i = JSON.parse(localStorage.getItem("itemList"))?.length;
+  static #nextId = parseInt(JSON.parse(localStorage.getItem("nextId"))) || 1;
   static getAll() {
     const itemList = this.#itemList;
     // console.log(this.#container);
 
-    itemList.forEach(({ header, link, body, footer, imgLink }, i) =>
-      this.#createHtmlElement(header, link, body, footer, imgLink, i + 1)
+    itemList.forEach(({ header, link, body, footer, imgLink, id }) =>
+      this.#createHtmlElement(header, link, body, footer, imgLink, id)
+    );
+  }
+  static displayGivenList(list) {
+    this.#container.innerHTML = null;
+    list.forEach(({ header, link, body, footer, imgLink, id }) =>
+      this.#createHtmlElement(header, link, body, footer, imgLink, id)
     );
   }
   static create({
+    id = this.#nextId,
     header = "my item",
     link = "#",
     body = "this is my item",
     footer = "200$",
     imgLink = `https://picsum.photos/seed/${Math.random() * 100}/360/240`,
   }) {
-    this.#i = this.#i + 1;
-    this.#storeItemInLocalStorage({ header, link, body, footer, imgLink });
+    this.#nextId = this.#nextId + 1;
+    this.#storeItemInLocalStorage({ id, header, link, body, footer, imgLink });
   }
   static #createHtmlElement(header, link, body, footer, imgLink, i) {
     const itemWrapper = document.createElement("div");
@@ -39,8 +46,6 @@ export class Product {
     imgContainer.classList.add("products-item-image-container");
     const img = document.createElement("img");
     img.src = imgLink;
-    // console.log(imgLink);
-
     itemContent.appendChild(itemHeader.appendChild(itemLink));
     itemContent.appendChild(itemBody);
     itemContent.appendChild(itemFooter);
@@ -54,6 +59,7 @@ export class Product {
     const itemList = this.#itemList;
     itemList.push(item);
     localStorage.setItem("itemList", JSON.stringify(itemList));
+    localStorage.setItem("nextId", this.#nextId);
   }
   static get #itemList() {
     return JSON.parse(localStorage.getItem("itemList"));

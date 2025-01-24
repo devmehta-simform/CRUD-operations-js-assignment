@@ -52,8 +52,8 @@
   line-height: 2.25rem;
 }
 .products-item-image-container {
-  width: 80px;
-  height: 80px;
+  width: 30%;
+  /* height: 80px; */
   padding: 50px 0px;
 }
 .products-item img {
