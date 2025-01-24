@@ -8,7 +8,7 @@
   </head>
   <body>
     <a href="index.html">back</a>
-    <form name="create-form">
+    <form name="create-update-form">
       <label for="header">name</label>
       <input id="header" type="text" required /><br />
       <label for="body">description</label>
@@ -23,13 +23,29 @@
   <script type="module" defer>
     import { Product } from "./ProductsUtil.mjs";
     const submitBtn = document.querySelector("#submitbtn");
+    // const params=
+    // console.log();
+    const form = document.forms["create-update-form"];
+    const params = new URLSearchParams(window.location.search);
+    // console.log(header, footer, imgLink, id, body);
+    form["header"].value = params.get("header");
+    form["footer"].value = params.get("footer");
+    form["imgLink"].value = params.get("imgLink");
+    form["body"].value = params.get("body");
     submitBtn.addEventListener("click", (e) => {
-      const form = document.forms["create-form"];
+      const form = document.forms["create-update-form"];
       const header = form["header"].value;
       const footer = form["footer"].value;
       const body = form["body"].value;
       const imgLink = form["imgLink"].value;
-      Product.create({ header, footer, body, imgLink });
+      console.log({ header, footer, body, imgLink });
+
+      if (params.get("id") != null) {
+        Product.update({ header, footer, body, imgLink, id: params.get("id") });
+        debugger;
+      } else {
+        Product.create({ header, footer, body, imgLink });
+      }
       window.location = "index.html";
     });
     //   function submitHandler() {

@@ -1,5 +1,5 @@
 export class Product {
-  static #nextId = parseInt(JSON.parse(localStorage.getItem("nextId"))) || 1;
+  static #nextId = parseInt(JSON.parse(localStorage.getItem("nextId"))) || 100;
   static getAll() {
     const itemList = this.#itemList;
     // console.log(this.#container);
@@ -25,6 +25,16 @@ export class Product {
     this.#nextId = this.#nextId + 1;
     this.#storeItemInLocalStorage({ id, header, link, body, footer, imgLink });
   }
+  static update(item) {
+    console.log(item);
+
+    const ind = this.#itemList.findIndex((a) => a.id == item.id);
+    const itemList = this.#itemList;
+    itemList[ind] = item;
+    // debugger;
+    localStorage.setItem("itemList", JSON.stringify(itemList));
+    // this.displayGivenList(itemList);
+  }
   static #createHtmlElement(header, link, body, footer, imgLink, i) {
     const itemWrapper = document.createElement("div");
     itemWrapper.id = `products-item-${i}`;
@@ -38,6 +48,10 @@ export class Product {
     const itemBody = document.createElement("p");
     const itemFooter = document.createElement("span");
     itemFooter.classList.add("products-item-footer");
+    const itemFooterEdit = document.createElement("a");
+    itemFooterEdit.innerHTML = "<br/>edit";
+    itemFooterEdit.href = `create-update-item.html?id=${i}&header=${header}&body=${body}&footer=${footer}&imgLink=${imgLink}`;
+    // itemFooterEdit.classList.add("products-item-footer");
     itemLink.innerHTML = header;
     itemLink.href = link;
     itemBody.innerHTML = body;
@@ -49,6 +63,7 @@ export class Product {
     itemContent.appendChild(itemHeader.appendChild(itemLink));
     itemContent.appendChild(itemBody);
     itemContent.appendChild(itemFooter);
+    itemContent.appendChild(itemFooterEdit);
     imgContainer.appendChild(img);
     itemWrapper.appendChild(itemContent);
     itemWrapper.appendChild(imgContainer);
