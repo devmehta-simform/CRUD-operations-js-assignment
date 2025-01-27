@@ -1,3 +1,5 @@
+import { HandleProductsPagination } from "./ProductsPaginationUtil.mjs";
+
 export class Product {
   static #nextId = parseInt(JSON.parse(localStorage.getItem("nextId"))) || 100;
   static getAll() {
@@ -7,12 +9,14 @@ export class Product {
     itemList.forEach(({ header, link, body, footer, imgLink, id }) =>
       this.#createHtmlElement(header, link, body, footer, imgLink, id)
     );
+    HandleProductsPagination();
   }
   static displayGivenList(list) {
     this.#container.innerHTML = null;
     list.forEach(({ header, link, body, footer, imgLink, id }) =>
       this.#createHtmlElement(header, link, body, footer, imgLink, id)
     );
+    HandleProductsPagination();
   }
   static create({
     id = this.#nextId,
