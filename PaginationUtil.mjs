@@ -1,16 +1,18 @@
-const pagOffset = 2;
+const pagOffset = 4;
 let currbtn = 1;
-
-export function HandleProductsPagination() {
+let className;
+export function HandlePagination(classNameArg) {
+  className = classNameArg;
   if (
     !document
-      .querySelector(".products-pagination-btns-container")
+      .querySelector(`.${className}-pagination-btns-container`)
       .hasChildNodes()
   ) {
     initPagBtns(
-      document.querySelector(".products-pagination-btns-container"),
-      document.querySelectorAll(".products-items-container .products-item")
-        .length,
+      document.querySelector(`.${className}-pagination-btns-container`),
+      document.querySelectorAll(
+        `.${className}-items-container .${className}-item`
+      ).length,
       pagOffset
     );
   }
@@ -36,35 +38,35 @@ function initPagBtns(parentEle, nitems, offset) {
 function handlePagination(btnid) {
   //   console.log(btnid);
 
-  const productsItems = document.querySelectorAll(
-    ".products-items-container .products-item"
+  const items = document.querySelectorAll(
+    `.${className}-items-container .${className}-item`
   );
   //   5 10 15 20
   //   1 -> 1-5
   //   2 -> 6-10
   //   3 -> 11-15
   //   4 -> 16
-  productsItems.forEach((productsItem, i) => {
-    // const productsItemId = parseInt(productsItem.id.split("-")[2]);
+  items.forEach((item, i) => {
+    // const itemId = parseInt(item.id.split("-")[2]);
     const tmpval = btnid * pagOffset - i;
 
     if (tmpval > 0 && tmpval <= pagOffset) {
       console.clear();
       console.log(i, tmpval);
-      //   if (tmpval == 0 || i == productsItems.length - 1) {
-      //     productsItem.style.borderBottom = "2px solid gray";
+      //   if (tmpval == 0 || i == items.length - 1) {
+      //     item.style.borderBottom = "2px solid gray";
       //   }
-      productsItem.classList.contains("hide")
-        ? productsItem.classList.replace("hide", "show")
-        : productsItem.classList.add("show");
-      //   if (tmpval == 0) productsItem.style.border = "none";
+      item.classList.contains("hide")
+        ? item.classList.replace("hide", "show")
+        : item.classList.add("show");
+      //   if (tmpval == 0) item.style.border = "none";
     } else {
       console.clear();
       console.log(i, tmpval);
-      //   productsItem.style.display = "none";
-      productsItem.classList.contains("show")
-        ? productsItem.classList.replace("show", "hide")
-        : productsItem.classList.add("hide");
+      //   item.style.display = "none";
+      item.classList.contains("show")
+        ? item.classList.replace("show", "hide")
+        : item.classList.add("hide");
     }
   });
   document
