@@ -110,7 +110,7 @@ a {
 section {
   transition: opacity 1s ease-out;
   display: none;
-  margin-top: 3vh;
+  margin-top: 10vh;
 }
 .current_page {
   display: block;
