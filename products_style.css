@@ -48,6 +48,12 @@
   /* gap: 2vw; */
   /* min-width: 100px; */
 }
+.products-item-links-container {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 10px 0;
+}
 .products-item-content p {
   line-height: 2.25rem;
 }

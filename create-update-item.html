@@ -5,20 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>create item</title>
     <script src="ProductsUtil.mjs" type="module" defer></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      a {
+        font-size: 16px;
+        color: #007bff;
+        text-decoration: none;
+        margin-bottom: 20px;
+        display: inline-block;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      label {
+        display: block;
+        margin: 10px 0 5px;
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      input[type="url"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+      }
+
+      input[type="text"]:focus,
+      input[type="url"]:focus {
+        border-color: #007bff;
+      }
+      #submitbtn {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      #submitbtn:hover {
+        background-color: #0056b3;
+      }
+    </style>
   </head>
   <body>
-    <a href="index.html">back</a>
-    <form name="create-update-form">
-      <label for="header">name</label>
-      <input id="header" type="text" required /><br />
-      <label for="body">description</label>
-      <input id="body" type="text" required /><br />
-      <label for="footer">price</label>
-      <input id="footer" type="text" required /><br />
-      <label for="imgLink">link to image</label>
-      <input id="imgLink" type="url" required />
-      <button id="submitbtn" type="button">submit</button>
-    </form>
+    <div class="container">
+      <a href="index.html">Back</a>
+      <form name="create-update-form">
+        <label for="header">Name</label>
+        <input id="header" type="text" required="true" />
+        <label for="body">Description</label>
+        <input id="body" type="text" required />
+        <label for="footer">Price</label>
+        <input id="footer" type="text" required />
+        <label for="imgLink">Link to Image</label>
+        <input id="imgLink" type="url" required />
+        <button id="submitbtn" type="submit">Submit</button>
+      </form>
+    </div>
   </body>
   <script type="module" defer>
     import { Product } from "./ProductsUtil.mjs";
@@ -33,6 +107,7 @@
     form["imgLink"].value = params.get("imgLink");
     form["body"].value = params.get("body");
     submitBtn.addEventListener("click", (e) => {
+      e.preventDefault();
       const form = document.forms["create-update-form"];
       const header = form["header"].value;
       const footer = form["footer"].value;
@@ -42,7 +117,7 @@
 
       if (params.get("id") != null) {
         Product.update({ header, footer, body, imgLink, id: params.get("id") });
-        debugger;
+        // debugger;
       } else {
         Product.create({ header, footer, body, imgLink });
       }

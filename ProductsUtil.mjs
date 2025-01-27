@@ -48,10 +48,22 @@ export class Product {
     const itemBody = document.createElement("p");
     const itemFooter = document.createElement("span");
     itemFooter.classList.add("products-item-footer");
-    const itemFooterEdit = document.createElement("a");
-    itemFooterEdit.innerHTML = "<br/>edit";
-    itemFooterEdit.href = `create-update-item.html?id=${i}&header=${header}&body=${body}&footer=${footer}&imgLink=${imgLink}`;
-    // itemFooterEdit.classList.add("products-item-footer");
+    const linksContainer = document.createElement("div");
+    linksContainer.classList.add("products-item-links-container");
+    const linkEdit = document.createElement("a");
+    linkEdit.innerHTML = "edit";
+    linkEdit.href = `create-update-item.html?id=${i}&header=${header}&body=${body}&footer=${footer}&imgLink=${imgLink}`;
+    const linkDelete = document.createElement("a");
+    linkDelete.innerHTML = "delete";
+    linkDelete.href = "#";
+    linkDelete.onclick = (e) => {
+      e.preventDefault();
+      const itemList = this.#itemList;
+      const ind = itemList.findIndex((item) => item.id == i);
+      itemList.splice(ind, 1);
+      localStorage.setItem("itemList", JSON.stringify(itemList));
+      window.location.reload();
+    };
     itemLink.innerHTML = header;
     itemLink.href = link;
     itemBody.innerHTML = body;
@@ -63,7 +75,9 @@ export class Product {
     itemContent.appendChild(itemHeader.appendChild(itemLink));
     itemContent.appendChild(itemBody);
     itemContent.appendChild(itemFooter);
-    itemContent.appendChild(itemFooterEdit);
+    linksContainer.appendChild(linkEdit);
+    linksContainer.appendChild(linkDelete);
+    itemContent.appendChild(linksContainer);
     imgContainer.appendChild(img);
     itemWrapper.appendChild(itemContent);
     itemWrapper.appendChild(imgContainer);
