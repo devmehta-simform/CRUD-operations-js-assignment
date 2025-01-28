@@ -72,19 +72,24 @@ export class Product {
     itemLink.href = link;
     itemBody.innerHTML = body;
     itemFooter.innerHTML = footer;
-    const imgContainer = document.createElement("div");
-    imgContainer.classList.add("products-item-image-container");
-    const img = document.createElement("img");
-    img.src = imgLink;
+    const carouselContainer = document.createElement("div");
+    carouselContainer.classList.add("products-item-img-carousel");
+    imgLink.split(" ").forEach((link) => {
+      const imgContainer = document.createElement("div");
+      imgContainer.classList.add("products-item-img-container");
+      const img = document.createElement("img");
+      img.src = imgLink;
+      imgContainer.appendChild(img);
+      carouselContainer.appendChild(imgContainer);
+    });
     itemContent.appendChild(itemHeader.appendChild(itemLink));
     itemContent.appendChild(itemBody);
     itemContent.appendChild(itemFooter);
     linksContainer.appendChild(linkEdit);
     linksContainer.appendChild(linkDelete);
     itemContent.appendChild(linksContainer);
-    imgContainer.appendChild(img);
     itemWrapper.appendChild(itemContent);
-    itemWrapper.appendChild(imgContainer);
+    itemWrapper.appendChild(carouselContainer);
     this.#container.appendChild(itemWrapper);
   }
 
