@@ -1,3 +1,18 @@
+#products .section-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  /* justify-content: flex-start; */
+  /* background-color: #159df8; */
+}
+#products .section-header > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
 .products-link {
   background: linear-gradient(to bottom, transparent 50%, #159df8 50%);
   background-size: 100% 180%;
