@@ -16,7 +16,7 @@
       .product-detail-container {
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         padding: 50px 20px;
         gap: 20px;
       }
@@ -28,13 +28,12 @@
         width: 100%;
         max-width: 800px;
         padding: 20px;
-        text-align: center;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
+        padding: 20px;
       }
-
       .product-detail-card h2 {
         font-size: 2rem;
         color: black;
@@ -59,7 +58,7 @@
         margin-bottom: 20px;
       }
       .product-detail-card p#product-footer::before {
-        content: "Price: ";
+        content: "Price: $";
       }
 
       .image-carousel {
@@ -72,6 +71,7 @@
         scroll-behavior: smooth;
         width: 60%;
         padding-bottom: 20px;
+        margin: auto;
       }
 
       .image-container {
@@ -90,6 +90,7 @@
       }
 
       .back-button {
+        margin-right: auto;
         display: inline-block;
         margin-top: 20px;
         padding: 10px 15px;
@@ -101,8 +102,7 @@
       }
 
       .back-button:hover {
-        background-color: #0056b3;
-        color: white;
+        text-decoration: underline;
       }
     </style>
   </head>

@@ -12,10 +12,11 @@
   justify-content: center;
   align-items: center;
   gap: 40px;
+  margin-bottom: 10px;
 }
 .products-link {
   background: linear-gradient(to bottom, transparent 50%, #159df8 50%);
-  background-size: 100% 180%;
+  background-size: 100% 190%;
   background-position: top;
   transition: all 0.3s;
 }
@@ -105,7 +106,7 @@
 }
 .products-item-img-carousel {
   width: 250px;
-  height: 250px;
+  height: fit-content;
   display: flex;
   overflow: hidden;
   flex-direction: row;
