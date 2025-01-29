@@ -76,6 +76,53 @@
       #submitbtn:hover {
         background-color: #0056b3;
       }
+      .carousel {
+        display: none;
+        margin-top: 15px;
+        padding: 10px;
+        background-color: #f0f0f0;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
+        width: 100%;
+        height: fit-content;
+        margin: auto;
+      }
+
+      .carousel img {
+        width: 100px;
+        height: fit-content;
+        margin: 5px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .carousel-container {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+      }
+
+      .carousel-container div {
+        scroll-snap-align: center;
+      }
+
+      .show-preview-btn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        margin-top: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+        margin-bottom: 10px;
+      }
+
+      .show-preview-btn:hover {
+        background-color: #0056b3;
+      }
     </style>
   </head>
   <body>
@@ -83,7 +130,7 @@
       <a href="index.html">Back</a>
       <form name="create-update-form">
         <label for="header">Name</label>
-        <input id="header" type="text" required="true" />
+        <input id="header" type="text" required />
         <label for="body">Description</label>
         <input id="body" type="text" required />
         <label for="footer">Price</label>
@@ -91,12 +138,52 @@
         <label for="imgLink"
           >Link to Image (separate multiple links by white space)</label
         >
-        <input id="imgLink" type="url" required />
+        <input id="imgLink" type="url" required /><button
+          type="button"
+          class="show-preview-btn"
+          id="showPreviewBtn"
+          value="show"
+        >
+          Show Preview
+        </button>
+        <div class="carousel" id="carouselContainer">
+          <div class="carousel-container" id="carouselImages">
+            <!-- Images will be injected here -->
+          </div>
+        </div>
         <button id="submitbtn" type="submit">Submit</button>
       </form>
     </div>
   </body>
   <script type="module" defer>
+    const showPreviewBtn = document.getElementById("showPreviewBtn");
+    const carouselContainer = document.getElementById("carouselContainer");
+    const carouselImages = document.getElementById("carouselImages");
+    const imgLinkInput = document.getElementById("imgLink");
+
+    showPreviewBtn.addEventListener("click", () => {
+      if (showPreviewBtn.value === "show") {
+        const imgLinks = imgLinkInput.value.split(" ").filter(Boolean); // Get all URLs entered by the user
+        carouselImages.innerHTML = "";
+        if (imgLinks.length > 0) {
+          imgLinks.forEach((link) => {
+            const imgDiv = document.createElement("div");
+            const img = document.createElement("img");
+            img.src = link;
+            img.alt = "Image Preview";
+            imgDiv.appendChild(img);
+            carouselImages.appendChild(imgDiv);
+          });
+          carouselContainer.style.display = "block";
+        }
+        showPreviewBtn.value = "hide";
+        showPreviewBtn.innerHTML = "Hide Preview";
+      } else {
+        showPreviewBtn.value = "show";
+        showPreviewBtn.innerHTML = "Show Preview";
+        carouselContainer.style.display = "none";
+      }
+    });
     import { Product } from "./ProductsUtil.mjs";
     const submitBtn = document.querySelector("#submitbtn");
     // const params=
