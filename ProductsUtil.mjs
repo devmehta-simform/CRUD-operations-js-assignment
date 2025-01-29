@@ -80,7 +80,7 @@ export class Product {
         const imgContainer = document.createElement("div");
         imgContainer.classList.add("products-item-img-container");
         const img = document.createElement("img");
-        img.src = imgLink;
+        img.src = link;
         imgContainer.appendChild(img);
         carouselContainer.appendChild(imgContainer);
       }
