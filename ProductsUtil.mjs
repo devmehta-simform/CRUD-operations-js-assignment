@@ -69,7 +69,8 @@ export class Product {
       window.location.reload();
     };
     itemLink.innerHTML = header;
-    itemLink.href = link;
+    itemLink.href = `products-view.html?id=${i}&header=${header}&body=${body}&footer=${footer}&imgLink=${imgLink}`;
+
     itemBody.innerHTML = body;
     itemFooter.innerHTML = footer;
     const carouselContainer = document.createElement("div");

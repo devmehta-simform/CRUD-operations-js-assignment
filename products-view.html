@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        color: #333;
+      }
+
+      .product-detail-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 20px;
+        gap: 20px;
+      }
+
+      .product-detail-card {
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 800px;
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .product-detail-card h2 {
+        font-size: 2rem;
+        color: black;
+        margin-bottom: 15px;
+      }
+      .product-detail-card h2::before {
+        content: "name: ";
+      }
+      .product-detail-card p#product-description {
+        font-size: 1.5rem;
+        line-height: 1.6;
+        color: #555;
+        margin-bottom: 20px;
+      }
+      .product-detail-card p#product-description::before {
+        content: "decription: ";
+      }
+      .product-detail-card p#product-footer {
+        font-size: 1.25rem;
+        line-height: 1.6;
+        color: gray;
+        margin-bottom: 20px;
+      }
+      .product-detail-card p#product-footer::before {
+        content: "Price: ";
+      }
+
+      .image-carousel {
+        display: flex;
+        gap: 15px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        scroll-behavior: smooth;
+        width: 60%;
+        padding-bottom: 20px;
+      }
+
+      .image-container {
+        width: 60%;
+        height: auto;
+        border-radius: 8px;
+        overflow: hidden;
+        scroll-snap-align: center;
+        flex-shrink: 0;
+      }
+
+      .image-container img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .back-button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 15px;
+        color: #007bff;
+        font-size: 16px;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background-color 0.3s;
+      }
+
+      .back-button:hover {
+        background-color: #0056b3;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="product-detail-container">
+      <div id="product-detail" class="product-detail-card">
+        <a href="index.html" class="back-button">Back</a>
+        <div class="image-carousel" id="carousel-container"></div>
+        <div class="product-info">
+          <h2 id="product-title"></h2>
+          <p id="product-description"></p>
+          <p id="product-footer"></p>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get("id");
+        const header = urlParams.get("header");
+        const body = urlParams.get("body");
+        const footer = urlParams.get("footer");
+        const imgLink = urlParams.get("imgLink");
+
+        const productTitle = document.getElementById("product-title");
+        const productDescription = document.getElementById(
+          "product-description"
+        );
+        const productFooter = document.getElementById("product-footer");
+
+        productTitle.innerHTML = header;
+        productDescription.innerHTML = body;
+        productFooter.innerHTML = footer;
+
+        const imgLinks = imgLink.split(" ");
+        const carouselContainer = document.getElementById("carousel-container");
+
+        imgLinks.forEach((link) => {
+          const imgContainer = document.createElement("div");
+          imgContainer.classList.add("image-container");
+          const img = document.createElement("img");
+          img.src = link;
+          img.alt = `${header} image`;
+
+          imgContainer.appendChild(img);
+          carouselContainer.appendChild(imgContainer);
+        });
+      });
+    </script>
+  </body>
+</html>

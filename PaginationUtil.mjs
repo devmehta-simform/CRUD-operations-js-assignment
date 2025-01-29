@@ -51,8 +51,8 @@ function handlePagination(btnid) {
     const tmpval = btnid * pagOffset - i;
 
     if (tmpval > 0 && tmpval <= pagOffset) {
-      console.clear();
-      console.log(i, tmpval);
+      // console.clear();
+      // console.log(i, tmpval);
       //   if (tmpval == 0 || i == items.length - 1) {
       //     item.style.borderBottom = "2px solid gray";
       //   }
