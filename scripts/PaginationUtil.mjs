@@ -5,6 +5,7 @@ document.querySelector("#pagination-input")?.addEventListener("change", (e) => {
   pagOffset = parseInt(e.target.value);
   document.querySelector(`.${className}-pagination-btns-container`).innerHTML =
     "";
+  currbtn = 1;
   HandlePagination(className, pagOffset);
 });
 export function HandlePagination(classNameArg, pagOffset = 1) {
