@@ -12,14 +12,23 @@ export function productsHandler() {
     console.log(e.target.value);
     const itemList = JSON.parse(localStorage.getItem("itemList"));
     switch (e.target.value) {
-      case "id":
+      case "idasc":
         itemList.sort((a, b) => parseInt(a.id) - parseInt(b.id));
         break;
-      case "name":
+      case "nameasc":
         itemList.sort((a, b) => a.header.localeCompare(b.header));
         break;
-      case "price":
+      case "priceasc":
         itemList.sort((a, b) => parseFloat(a.footer) - parseFloat(b.footer));
+        break;
+      case "iddesc":
+        itemList.sort((a, b) => parseInt(b.id) - parseInt(a.id));
+        break;
+      case "namedesc":
+        itemList.sort((a, b) => b.header.localeCompare(a.header));
+        break;
+      case "pricedesc":
+        itemList.sort((a, b) => parseFloat(b.footer) - parseFloat(a.footer));
         break;
     }
     Product.displayGivenList(itemList);
