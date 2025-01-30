@@ -68,10 +68,12 @@ export class Product {
     linkDelete.href = "#";
     linkDelete.onclick = (e) => {
       e.preventDefault();
-      const itemList = this.#itemList;
-      const ind = itemList.findIndex((item) => item.id == i);
-      itemList.splice(ind, 1);
-      localStorage.setItem("itemList", JSON.stringify(itemList));
+      if (confirm(`about to delete the item "${header}"`)) {
+        const itemList = this.#itemList;
+        const ind = itemList.findIndex((item) => item.id == i);
+        itemList.splice(ind, 1);
+        localStorage.setItem("itemList", JSON.stringify(itemList));
+      }
       window.location.reload();
     };
     itemLink.innerHTML = header;

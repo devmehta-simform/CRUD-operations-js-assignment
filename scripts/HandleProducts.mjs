@@ -9,7 +9,7 @@ export function productsHandler() {
   //   console.log(sortBy);
   sortBydd.addEventListener("change", (e) => {
     // localStorage.setItem("sortBy", e.target.value);
-    console.log(e.target.value);
+    // console.log(e.target.value);
     const itemList = JSON.parse(localStorage.getItem("itemList"));
     switch (e.target.value) {
       case "idasc":
