@@ -133,8 +133,14 @@
         <input id="header" type="text" required />
         <label for="body">Description</label>
         <input id="body" type="text" required />
-        <label for="footer">Price</label>
-        <input id="footer" type="text" required />
+        <label for="footer">Price (price upto 2 decimal places x.yz)</label>
+        <input
+          id="footer"
+          type="text"
+          inputmode="numeric"
+          pattern="^[0-9]+(.)?[0-9]$"
+          required
+        />
         <label for="imgLink"
           >Link to Image (separate multiple links by white space)</label
         >
@@ -151,7 +157,7 @@
             <!-- Images will be injected here -->
           </div>
         </div>
-        <button id="submitbtn" type="submit">Submit</button>
+        <button id="submitbtn" type="button">Submit</button>
       </form>
     </div>
   </body>
@@ -196,21 +202,35 @@
     form["imgLink"].value = params.get("imgLink");
     form["body"].value = params.get("body");
     submitBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const form = document.forms["create-update-form"];
-      const header = form["header"].value;
-      const footer = form["footer"].value;
-      const body = form["body"].value;
-      const imgLink = form["imgLink"].value;
-      console.log({ header, footer, body, imgLink });
-
-      if (params.get("id") != null) {
-        Product.update({ header, footer, body, imgLink, id: params.get("id") });
-        // debugger;
+      if (!form.checkValidity()) {
+        var tmpSubmit = document.createElement("button");
+        tmpSubmit.type = "submit";
+        form.appendChild(tmpSubmit);
+        tmpSubmit.click();
+        form.removeChild(tmpSubmit);
+        return;
       } else {
-        Product.create({ header, footer, body, imgLink });
+        const form = document.forms["create-update-form"];
+        const header = form["header"].value;
+        const footer = form["footer"].value;
+        const body = form["body"].value;
+        const imgLink = form["imgLink"].value;
+        console.log({ header, footer, body, imgLink });
+
+        if (params.get("id") != null) {
+          Product.update({
+            header,
+            footer,
+            body,
+            imgLink,
+            id: params.get("id"),
+          });
+          // debugger;
+        } else {
+          Product.create({ header, footer, body, imgLink });
+        }
+        window.location = "index.html";
       }
-      window.location = "index.html";
     });
     //   function submitHandler() {
     //     console.log(document.forms);
