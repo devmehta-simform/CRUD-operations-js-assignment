@@ -9,20 +9,14 @@ export class Product {
     itemList.forEach(({ header, link, body, footer, imgLink, id }) =>
       this.#createHtmlElement(header, link, body, footer, imgLink, id)
     );
-    HandlePagination(
-      "products",
-      parseInt(document.querySelector("#pagination-input input")?.value) || 1
-    );
+    HandlePagination("products");
   }
   static displayGivenList(list) {
     this.#container.innerHTML = null;
     list.forEach(({ header, link, body, footer, imgLink, id }) =>
       this.#createHtmlElement(header, link, body, footer, imgLink, id)
     );
-    HandlePagination(
-      "products",
-      parseInt(document.querySelector("#pagination-input input")?.value) || 1
-    );
+    HandlePagination("products");
   }
   static create({
     id = this.#nextId,

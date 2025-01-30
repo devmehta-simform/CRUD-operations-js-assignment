@@ -1,14 +1,23 @@
-let pagOffset = 1;
+let pagOffset = localStorage.getItem("pagOffset")
+  ? parseInt(localStorage.getItem("pagOffset"))
+  : (() => {
+      localStorage.setItem("pagOffset", 1);
+      return 1;
+    })();
 let currbtn = 1;
 let className;
 document.querySelector("#pagination-input")?.addEventListener("change", (e) => {
   pagOffset = parseInt(e.target.value);
   document.querySelector(`.${className}-pagination-btns-container`).innerHTML =
     "";
+  localStorage.setItem("pagOffset", pagOffset);
   currbtn = 1;
   HandlePagination(className, pagOffset);
 });
-export function HandlePagination(classNameArg, pagOffset = 1) {
+export function HandlePagination(
+  classNameArg,
+  pagOffset = parseInt(localStorage.getItem("pagOffset"))
+) {
   className = classNameArg;
   // console.log("HandlePagination", pagOffset);
 

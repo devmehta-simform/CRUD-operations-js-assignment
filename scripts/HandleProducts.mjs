@@ -1,6 +1,14 @@
 import { Product } from "./ProductsUtil.mjs";
 
 export function productsHandler() {
+  const pag = document.querySelector("#pagination-input input");
+  let pagOffset = localStorage.getItem("pagOffset")
+    ? parseInt(localStorage.getItem("pagOffset"))
+    : (() => {
+        localStorage.setItem("pagOffset", 1);
+        return 1;
+      })();
+  pag.value = pagOffset;
   if (
     document.querySelector(".products-items-container").hasChildNodes() == false
   )
