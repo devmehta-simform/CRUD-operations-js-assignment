@@ -79,6 +79,7 @@
   align-items: center;
   gap: 10px;
   margin-top: 20px;
+  flex-wrap: wrap;
 }
 .services-pagination-btns-container .pagination-btn {
   cursor: pointer;

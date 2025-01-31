@@ -87,6 +87,21 @@ function route(e) {
   if (e.currentTarget.id == "products_link") {
     productsHandler();
   }
+  document.querySelectorAll("img").forEach((img) => {
+    const checkImage = function (url, cb) {
+      var s = document.createElement("IMG");
+      s.src = url;
+      s.onerror = function () {
+        cb(false);
+      };
+      s.onload = function () {
+        cb(true);
+      };
+    };
+    checkImage(img.src, (exists) => {
+      if (!exists) img.src = "./image.png";
+    });
+  });
   window.scrollTo(0, 0);
 }
 
