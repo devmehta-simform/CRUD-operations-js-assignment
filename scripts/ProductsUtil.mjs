@@ -82,20 +82,7 @@ export class Product {
         const imgContainer = document.createElement("div");
         imgContainer.classList.add("products-item-img-container");
         const img = document.createElement("img");
-        const checkImage = function (url, cb) {
-          var s = document.createElement("IMG");
-          s.src = url;
-          s.onerror = function () {
-            cb(false);
-          };
-          s.onload = function () {
-            cb(true);
-          };
-        };
-        checkImage(link, (exists) => {
-          if (exists) img.src = link;
-          else img.src = "./image.png";
-        });
+        img.src = link;
         imgContainer.appendChild(img);
         carouselContainer.appendChild(imgContainer);
       }
