@@ -99,6 +99,8 @@ function route(e) {
       };
     };
     checkImage(img.src, (exists) => {
+      console.log(img.src, exists);
+
       if (!exists) img.src = "./image.png";
     });
   });
