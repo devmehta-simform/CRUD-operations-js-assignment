@@ -11,8 +11,9 @@ document.querySelector("#pagination-input")?.addEventListener("change", (e) => {
   document.querySelector(`.${className}-pagination-btns-container`).innerHTML =
     "";
   localStorage.setItem("pagOffset", pagOffset);
-  currbtn = 1;
-  HandlePagination(className, pagOffset);
+  window.location.reload();
+  // currbtn = 1;
+  // HandlePagination(className, pagOffset);
 });
 export function HandlePagination(
   classNameArg,

@@ -133,12 +133,12 @@
         <input id="header" type="text" required />
         <label for="body">Description</label>
         <input id="body" type="text" required />
-        <label for="footer">Price (price upto 2 decimal places x.yz)</label>
+        <label for="footer">Price (positive integer)</label>
         <input
           id="footer"
           type="text"
           inputmode="numeric"
-          pattern="^[0-9]+(.)?[0-9]$"
+          pattern="^[0-9]+$"
           required
         />
         <label for="imgLink"

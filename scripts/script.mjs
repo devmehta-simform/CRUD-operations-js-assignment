@@ -82,7 +82,7 @@ function route(e) {
     stopSlideShow();
   }
   if (e.currentTarget.id == "services_link") {
-    HandlePagination("services", 5);
+    HandlePagination("services");
   }
   if (e.currentTarget.id == "products_link") {
     productsHandler();
