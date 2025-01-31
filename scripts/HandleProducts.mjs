@@ -1,6 +1,8 @@
 import { Product } from "./ProductsUtil.mjs";
 
 export function productsHandler() {
+  // console.log("producst handler");
+
   const pag = document.querySelector("#pagination-input input");
   let pagOffset = localStorage.getItem("pagOffset")
     ? parseInt(localStorage.getItem("pagOffset"))
@@ -9,10 +11,8 @@ export function productsHandler() {
         return 1;
       })();
   pag.value = pagOffset;
-  if (
-    document.querySelector(".products-items-container").hasChildNodes() == false
-  )
-    Product.getAll();
+  document.querySelector(".products-items-container").innerHTML = "";
+  Product.getAll();
   const sortBydd = document.querySelector("#sortBy");
   //   console.log(sortBy);
   sortBydd.addEventListener("change", (e) => {

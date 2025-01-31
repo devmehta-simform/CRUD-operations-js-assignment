@@ -8,33 +8,24 @@ let currbtn = 1;
 let className;
 document.querySelector("#pagination-input")?.addEventListener("change", (e) => {
   pagOffset = parseInt(e.target.value);
-  document.querySelector(`.${className}-pagination-btns-container`).innerHTML =
-    "";
   localStorage.setItem("pagOffset", pagOffset);
   window.location.reload();
-  // currbtn = 1;
-  // HandlePagination(className, pagOffset);
 });
 export function HandlePagination(
   classNameArg,
   pagOffset = parseInt(localStorage.getItem("pagOffset"))
 ) {
   className = classNameArg;
-  // console.log("HandlePagination", pagOffset);
-
-  if (
-    !document
-      .querySelector(`.${className}-pagination-btns-container`)
-      .hasChildNodes()
-  ) {
-    initPagBtns(
-      document.querySelector(`.${className}-pagination-btns-container`),
-      document.querySelectorAll(
-        `.${className}-items-container .${className}-item`
-      ).length,
-      pagOffset
-    );
-  }
+  document.querySelector(`.${className}-pagination-btns-container`).innerHTML =
+    "";
+  initPagBtns(
+    document.querySelector(`.${className}-pagination-btns-container`),
+    document.querySelectorAll(
+      `.${className}-items-container .${className}-item`
+    ).length,
+    pagOffset
+  );
+  // }
   handlePagination(currbtn, pagOffset);
 }
 
@@ -44,7 +35,7 @@ function initPagBtns(parentEle, nitems, pagOffset) {
   for (let i = 1; i <= nbtns; i++) {
     const btn = document.createElement("button");
     btn.id = `btn-${i}`;
-    btn.classList.add("pagination-btn");
+    btn.classList.add("pagination-btn", `${className}-pag-btn`);
     btn.textContent = i;
     btn.addEventListener("click", (e) => {
       handlePagination(e.target.id.split("-")[1], pagOffset);
@@ -57,10 +48,13 @@ function initPagBtns(parentEle, nitems, pagOffset) {
 function handlePagination(btnid, pagOffset) {
   // console.log("handlePagination btnid", btnid);
   // console.log("handlePagination pageOffset", btnid);
-
+  // console.log("init", btnid);
   const items = document.querySelectorAll(
     `.${className}-items-container .${className}-item`
   );
+  if (btnid * pagOffset > items.length) {
+    btnid = 1;
+  }
   //   5 10 15 20
   //   1 -> 1-5
   //   2 -> 6-10
@@ -100,10 +94,10 @@ function handlePagination(btnid, pagOffset) {
     }
   });
   document
-    .querySelector(`.pagination-btn#btn-${currbtn}`)
+    .querySelector(`.pagination-btn.${className}-pag-btn#btn-${currbtn}`)
     ?.classList.remove("current-pag-btn");
   document
-    .querySelector(`.pagination-btn#btn-${btnid}`)
+    .querySelector(`.pagination-btn.${className}-pag-btn#btn-${btnid}`)
     ?.classList.add("current-pag-btn");
   window.scrollTo(0, 0);
   currbtn = btnid;

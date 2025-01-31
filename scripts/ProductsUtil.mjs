@@ -30,7 +30,7 @@ export class Product {
     this.#storeItemInLocalStorage({ id, header, link, body, footer, imgLink });
   }
   static update(item) {
-    console.log(item);
+    // console.log(item);
 
     const ind = this.#itemList.findIndex((a) => a.id == item.id);
     const itemList = this.#itemList;
