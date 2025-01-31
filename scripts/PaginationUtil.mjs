@@ -52,7 +52,8 @@ function handlePagination(btnid, pagOffset) {
   const items = document.querySelectorAll(
     `.${className}-items-container .${className}-item`
   );
-  if (btnid * pagOffset > items.length) {
+
+  if (btnid > Math.ceil(parseFloat(items.length) / parseFloat(pagOffset))) {
     btnid = 1;
   }
   //   5 10 15 20
