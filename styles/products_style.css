@@ -172,3 +172,15 @@
   background-color: black;
   color: white;
 }
+
+#search,
+#pagination-input {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+#search input,
+#pagination-input input {
+  padding: 5px 10px;
+}
