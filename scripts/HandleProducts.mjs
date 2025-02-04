@@ -42,4 +42,22 @@ export function productsHandler() {
     Product.displayGivenList(itemList);
     // console.log(itemList);
   });
+  const searchBtn = document.querySelector("#search-btn");
+  const searchQuery = document.querySelector("#search-query");
+
+  searchBtn.addEventListener("click", (e) => {
+    // console.log(searchQuery.value);
+    const searchQuerytmp = searchQuery.value;
+    const itemList = JSON.parse(localStorage.getItem("itemList"));
+    // console.log(
+    const red = itemList.reduce((acc, item) => {
+      if (
+        item.body.match(new RegExp(searchQuerytmp, "gi")) ||
+        item.header.match(new RegExp(searchQuerytmp, "gi"))
+      )
+        return [...acc, item];
+      return acc;
+    }, []);
+    Product.displayGivenList(red);
+  });
 }
