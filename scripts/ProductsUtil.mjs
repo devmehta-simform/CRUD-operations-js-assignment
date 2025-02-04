@@ -32,7 +32,9 @@ export class Product {
   static update(item) {
     // console.log(item);
 
-    const ind = this.#itemList.findIndex((a) => a.id === item.id);
+    const ind = this.#itemList.findIndex(
+      (a) => parseInt(a.id) === parseInt(item.id)
+    );
     const itemList = this.#itemList;
     itemList[ind] = item;
     // debugger;
