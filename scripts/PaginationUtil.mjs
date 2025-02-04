@@ -26,7 +26,7 @@ export function HandlePagination(
     pagOffset
   );
   // }
-  handlePagination(currbtn, pagOffset);
+  handleProducts(currbtn, pagOffset);
 }
 
 function initPagBtns(parentEle, nitems, pagOffset) {
@@ -38,14 +38,14 @@ function initPagBtns(parentEle, nitems, pagOffset) {
     btn.classList.add("pagination-btn", `${className}-pag-btn`);
     btn.textContent = i;
     btn.addEventListener("click", (e) => {
-      handlePagination(e.target.id.split("-")[1], pagOffset);
+      handleProducts(e.target.id.split("-")[1], pagOffset);
     });
     parentEle.appendChild(btn);
   }
   //   <button class="pagination-btn" id="btn-1">1</button><button class="pagination-btn" id="btn-2">2</button><button class="pagination-btn" id="btn-3">3</button><button class="pagination-btn" id="btn-4">4</button><button class="pagination-btn" id="btn-5">5</button>
 }
 
-function handlePagination(btnid, pagOffset) {
+function handleProducts(btnid, pagOffset) {
   // console.log("handlePagination btnid", btnid);
   // console.log("handlePagination pageOffset", btnid);
   // console.log("init", btnid);
