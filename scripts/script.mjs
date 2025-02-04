@@ -7,7 +7,7 @@ window.addEventListener("DOMContentLoaded", function () {
   if (curr_id != null) {
     route({ currentTarget: { id: curr_id } });
   }
-  if (localStorage.getItem("itemList") == null) {
+  if (localStorage.getItem("itemList") === null) {
     localStorage.setItem("itemList", JSON.stringify([]));
   }
 });
@@ -41,7 +41,7 @@ document.addEventListener("scroll", (e) => {
     const skillsMeterContainer = document.querySelector(
       ".skills-meters-container"
     );
-    state == "show"
+    state === "show"
       ? skillsMeterContainer.classList.replace("hide", "show")
       : skillsMeterContainer.classList.replace("show", "hide");
   }
@@ -76,15 +76,15 @@ function route(e) {
   newele.className = "current_page";
   localStorage.setItem("curr_id", e.currentTarget.id);
 
-  if (e.currentTarget.id == "images_link") {
+  if (e.currentTarget.id === "images_link") {
     startSlideShow();
   } else {
     stopSlideShow();
   }
-  if (e.currentTarget.id == "services_link") {
+  if (e.currentTarget.id === "services_link") {
     HandlePagination("services", 4);
   }
-  if (e.currentTarget.id == "products_link") {
+  if (e.currentTarget.id === "products_link") {
     productsHandler();
   }
   document.querySelectorAll("img").forEach((img) => {

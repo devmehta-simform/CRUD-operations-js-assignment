@@ -6,7 +6,7 @@ for (let i = 0; i < 3; i++) {
     "src",
     `https://picsum.photos/seed/${Math.random() * 100}/1280/720`
   );
-  if (i == 0) {
+  if (i === 0) {
     imgele.className = "current_img";
   }
   carousel.appendChild(imgele);

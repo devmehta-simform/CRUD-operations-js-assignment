@@ -32,7 +32,7 @@ export class Product {
   static update(item) {
     // console.log(item);
 
-    const ind = this.#itemList.findIndex((a) => a.id == item.id);
+    const ind = this.#itemList.findIndex((a) => a.id === item.id);
     const itemList = this.#itemList;
     itemList[ind] = item;
     // debugger;
@@ -64,7 +64,7 @@ export class Product {
       e.preventDefault();
       if (confirm(`about to delete the item "${header}"`)) {
         const itemList = this.#itemList;
-        const ind = itemList.findIndex((item) => item.id == i);
+        const ind = itemList.findIndex((item) => item.id === i);
         itemList.splice(ind, 1);
         localStorage.setItem("itemList", JSON.stringify(itemList));
       }
